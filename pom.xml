@@ -11,7 +11,7 @@
 	<groupId>com.gaminghub</groupId>
 	<artifactId>GamingHub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>GamingHub</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -64,7 +64,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>ROOT</finalName>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

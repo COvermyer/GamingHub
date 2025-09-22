@@ -21,7 +21,7 @@
 
     <Loggers>
         <!-- App logs -->
-        <Logger name="com.gaminghub.app" level="debug" additivity="false">
+        <Logger name="com.gaminghub" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
         </Logger>

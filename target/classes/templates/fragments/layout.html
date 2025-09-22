@@ -301,7 +301,7 @@
 </head>
 
 <body th:fragment="shell(title, content)">
-	<div th:replace="this :: head(${title})"></div>
+	<div th:replace="~{this :: head(${title})}"></div>
 
 	<header class="nav">
 		<div class="nav-inner">

@@ -61,6 +61,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
+		
+		<!-- Exclude Spring Boot’s default logging (Logback) -->
+	    <dependency>
+    	    <groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter</artifactId>
+	        <exclusions>
+    	        <exclusion>
+        	        <groupId>org.springframework.boot</groupId>
+            	    <artifactId>spring-boot-starter-logging</artifactId>
+            	</exclusion>
+        	</exclusions>
+    	</dependency>
+
+    	<!-- Add Spring Boot Log4j2 Starter -->
+    	<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-log4j2</artifactId>
+    	</dependency>
 	</dependencies>
 
 	<build>

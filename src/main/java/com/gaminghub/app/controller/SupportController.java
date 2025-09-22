@@ -1,5 +1,7 @@
 package com.gaminghub.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,11 +15,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Validated
 public class SupportController {
 
+	private static final Logger logger = LoggerFactory.getLogger(SupportController.class);
+	
   // Option A: render the page
   @GetMapping("/about")
   public String about(Model model) {
-    // If you want a blank form object:
-    if (!model.containsAttribute("supportForm")) {
+    logger.info("./about endpoint was called");
+	  
+	  // If you want a blank form object
+	if (!model.containsAttribute("supportForm")) {
       model.addAttribute("supportForm", new SupportForm());
     }
     return "about"; // templates/about.html
@@ -28,6 +34,8 @@ public class SupportController {
   public String submitSupport(@ModelAttribute("supportForm") @Validated SupportForm form,
                               BindingResult br,
                               RedirectAttributes ra) {
+	  logger.info("./support endpoint was called");
+	  
     if (br.hasErrors()) {
       ra.addFlashAttribute("org.springframework.validation.BindingResult.supportForm", br);
       ra.addFlashAttribute("supportForm", form);

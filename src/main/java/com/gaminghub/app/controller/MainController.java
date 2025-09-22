@@ -1,5 +1,7 @@
 package com.gaminghub.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +14,15 @@ import com.gaminghub.app.business.GamesBusinessServiceInterface;
 @Controller
 public class MainController {
 
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@Autowired
     GamesBusinessServiceInterface games; 
 
     @GetMapping("/")
     public String home() {
+    	logger.info(" ./ endpoint was called");
+    	
         return "index";
     }
 
@@ -29,6 +35,8 @@ public class MainController {
             @RequestParam(required = false, name = "minRating") Float minRating,
             Model model) {
 
+    	logger.info(" ./products endpoint was called");
+    	
         // filtered list straight from the business service
         model.addAttribute("products", games.getFilteredGames(genre, platform, maxPrice, minRating));
 
@@ -48,6 +56,9 @@ public class MainController {
     // DETAIL PAGE
     @GetMapping("/product/{id}")
     public String product(@PathVariable int id, Model model) {
+    	
+    	logger.info(" ./product/{id} endpoint was called with an id of " + id);
+    	
         // Replace with your actual method, e.g., games.getGameById(id)
         var product = games.getGameById(id); // <-- ADDED
         model.addAttribute("product", product); // <-- ADDED
